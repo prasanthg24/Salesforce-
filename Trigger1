@@ -1,0 +1,18 @@
+trigger testTrigger on Account (after insert) 
+{
+	List <Contact> con = new List <contact>();
+    for(Account a : trigger.new)
+    {
+        System.debug(' Trigger.New List - ' + Trigger.new);
+         contact c = new contact();
+         c.AccountId = a.id;
+         c.LastName =  'Mr.'+a.Name;
+         c.Phone = a.Phone;
+       	 c.Title = ' Prasanth College of Engineering';
+         con.add(c);
+   
+    }
+ 	 	
+    insert con;
+    		
+}
